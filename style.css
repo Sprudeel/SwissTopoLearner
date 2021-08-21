@@ -1,0 +1,65 @@
+/* Standart Shit */
+* {margin:0px; padding:0px}
+
+/* Title */
+.title {
+    display: flex;
+    font-family: Archivo;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
+    z-index: 100;
+    white-space: nowrap;
+    padding: 20px;
+    text-align: center;
+}
+.version {
+    flex: 1;
+    font-size: 15px;
+}
+.name {
+    flex: 5;
+    font-size: 40px;
+    font-weight: bold;
+}
+.credit {
+    flex: 1;
+    font-size: 15px;
+}
+
+
+/* Content */
+body {
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.content {
+    height: 100vh;
+    display: flex;
+}
+
+.menu {
+    z-index: -100;
+    background-color: white;
+    flex: 1;
+    height: 100%;
+}
+.game {
+    flex: 3;
+    height: 100%;
+}
+.info {
+    flex: 1;
+    height: 100%;
+}
+.choosemode {
+    font-family: Archivo;
+    text-align: center;
+    padding: 10px;
+}
+.mode {
+    font-family: Archivo;
+    text-align: center;
+}
