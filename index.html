@@ -18,13 +18,30 @@
 </head>
 <body>
     <div class="content">
-        <div class="menu">
-            <div class="choosemode">Choose Mode</div>
-            <button class="mode">Endless</button>
+        <div class="menu" id="99">
+            <div class="choosemode">Choose Mode <span title="Choose from one of the Modes listed below &#013; 1. Endless - Random Questions and Endless! &#013; 2. Speed - 10 different Questions timed! &#013; 3. Learn - All Questions once with no Question twice!"class="material-icons md-small png">help_outline</span></div>
+            <button id="101" onclick="mode(1)" class="mode">Endless</button>
             <br>
-            <button class="mode">Speed</button>
+            <button id="102" class="mode">Speed</button>
             <br>
-            <button class="mode">Learn</button>
+            <button id="103" class="mode">Learn</button>
+
+            <div class="choosemode">Choose Topic <span title="Choose what you want to learn (self explanatory)" class="material-icons md-small png">help_outline</span></div>
+            <button id="201" class="choose" onclick="changeMode(1)">Kantone</button>
+            <br>
+            <button id="202" class="choose" onclick="changeMode(2)">Städte</button>
+            <br>
+            <button id="203" class="choose" onclick="changeMode(3)">Pässe</button>
+            <br>
+            <button id="204" class="choose" onclick="changeMode(4)">Seen</button>
+            <br>
+            <button id="205" class="choose" onclick="changeMode(5)">Flüsse</button>
+            <br>
+            <button id="206" class="choose" onclick="changeMode(6)">Berge, Gebirge</button>
+            <br>
+            <button id="207" class="choose" onclick="changeMode(7)">Spezielle Gebiete</button>
+            <br>
+            <button id="300" class="close" onclick="hideMenu()"><span class="material-icons md-small png">chevron_left</span>Close Menu</button>    
         </div>  
         <div class="game">
             GAME
@@ -33,11 +50,15 @@
             INFO
         </div>  
     </div>
-
+    <div id="400">
+        <button class="expand" onclick="expandMenu()">
+            <span class="material-icons md-small png">chevron_right</span>
+        </button>
+    </div>
 </body>
 
 
 
-<!---JavaScript File-->
-<source src="source.js" type="js">
+
+<script src="source.js"></script>
 </html>
