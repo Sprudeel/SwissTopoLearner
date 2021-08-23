@@ -1,7 +1,12 @@
 /* Standart Shit */
 * {margin:0px; padding:0px}
 
-/* Title */
+
+
+/*#########################
+##        Title           #
+#########################*/
+
 .title {
     display: flex;
     font-family: Archivo;
@@ -26,8 +31,9 @@
     font-size: 15px;
 }
 
-
-/* Content */
+/*#########################
+##        Content         #
+#########################*/
 body {
     background-image: url('images/background.jpg');
     background-size: cover;
@@ -39,6 +45,13 @@ body {
     height: 100vh;
     display: flex;
 }
+.png {
+    vertical-align: -6px;
+}
+
+/*#########################
+##        Menu            #
+#########################*/
 .menu {
     background-color: white;
     flex: 1;
@@ -49,16 +62,8 @@ body {
     border: 1px;
     border-radius: 0px 10px 10px 0px;
 }
-
-.png {
-    vertical-align: -6px;
-}
 .game {
     flex: 5;
-    height: 100%;
-}
-.info {
-    flex: 1;
     height: 100%;
 }
 .choosemode {
@@ -82,7 +87,6 @@ body {
     animation: btnhover 500ms forwards;
     cursor: pointer;
 }
-
 @keyframes btnhover {
     to {
         background-color: rgb(108, 177, 4);
@@ -100,7 +104,6 @@ body {
         color: black;
     }
 }
-
 .choose {
     margin: 3%;
     padding: 3%;
@@ -115,7 +118,6 @@ body {
     animation: choosehover 500ms forwards;
     cursor: pointer;
 }
-
 @keyframes choosehover {
     to {
         background-color: rgb(45, 115, 243);
@@ -160,4 +162,45 @@ body {
 .expand:hover {
     background-color: black;
     color: white;
+}
+
+
+
+
+/*#########################
+##        Info            #
+#########################*/
+.info {
+    background-color: white;
+    flex: 1;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: auto;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.616);
+    border: 1px;
+    border-radius: 10px 0px 0px 10px;
+    padding: 10px;
+    white-space: nowrap;
+}
+h3 {
+    width: 100%; 
+   text-align: center; 
+   border-bottom: 1px solid grey; 
+   color: #808080;
+   line-height: 0.1em;
+   margin: 10px 0 20px; 
+}
+h3 span { 
+    color: grey;
+    background:#fff; 
+    padding:0 10px; 
+}
+.subtitle { 
+    text-align: center;
+    color: grey;
+    font-family: Archivo;
+    font-weight: normal;
+    font-size: 11px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
