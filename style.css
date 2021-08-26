@@ -204,3 +204,41 @@ h3 span {
     margin-right: 10px;
     margin-left: 10px;
 }
+.correct-container {
+    font-family: Archivo;
+    font-size: 12px;
+    max-height: 10%;
+    scroll-behavior: smooth;
+    text-align: left;
+    padding-left: 1vw;
+    color: rgb(132, 197, 35);
+    max-height: 20vh;
+    overflow-y: scroll;
+    padding-bottom: 20px;
+}
+.small {
+    font-size: 15px;
+}
+.png2 {
+    vertical-align: -3px;
+}
+
+.correct-container::-webkit-scrollbar-track
+{
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+.correct-container::-webkit-scrollbar
+{
+  width: 8px;
+  background-color: #F5F5F5;
+}
+
+.correct-container::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #302c2c;
+}

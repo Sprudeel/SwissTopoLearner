@@ -31,12 +31,20 @@ function expandMenu() {
     document.getElementById(400).style.display = "none";
 }
 
+var counter = 1;
 function showCorrect(name) {
 
     // Create a new Element to host all informations
-
+    var container = document.getElementById(501);
+    var p = document.createElement("p");
+    p.id = counter;
+    container.insertBefore(p, null);
     // Fill Element
+    document.getElementById(counter).innerHTML = "<span class='material-icons md-18 png2 small'>check</span> " + name;
     
+
+    counter++;
+    return counter;
 }
 
 
