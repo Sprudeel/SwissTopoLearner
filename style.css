@@ -46,7 +46,7 @@ body {
     display: flex;
 }
 .png {
-    vertical-align: -6px;
+    vertical-align: -7px;
 }
 
 /*#########################
@@ -62,10 +62,6 @@ body {
     border: 1px;
     border-radius: 0px 10px 10px 0px;
 }
-.game {
-    flex: 5;
-    height: 100%;
-}
 .choosemode {
     font-size: 18px;
     font-family: Archivo;
@@ -80,8 +76,7 @@ body {
     cursor: pointer;
     border-style: solid;
     border-width: 2px;
-    border-color: rgb(108, 177, 4);
-    animation: btnoff 500ms forwards;
+    border-color: #6cb104;
 }
 .mode:hover {
     animation: btnhover 500ms forwards;
@@ -93,17 +88,6 @@ body {
         color: white;
     }
 }
-@keyframes btnoff {
-    from {
-        background-color: rgb(108, 177, 4);
-        color: white;
-    }
-    to {
-        
-        background-color: white;
-        color: black;
-    }
-}
 .choose {
     margin: 3%;
     padding: 3%;
@@ -111,8 +95,7 @@ body {
     cursor: pointer;
     border-style: solid;
     border-width: 2px;
-    border-color: rgb(45, 115, 243);
-    animation: chooseoff 500ms forwards;
+    border-color: #2d73f3;
 }
 .choose:hover {
     animation: choosehover 500ms forwards;
@@ -122,17 +105,6 @@ body {
     to {
         background-color: rgb(45, 115, 243);
         color: white;
-    }
-}
-@keyframes chooseoff {
-    from {
-        background-color: rgb(45, 115, 243);
-        color: white;
-    }
-    to {
-        
-        background-color: white;
-        color: black;
     }
 }
 .close {
@@ -258,4 +230,74 @@ h3 span {
 .time {
     font-family: Archivo;
     font-size: 18px;
+}
+.expand2 {
+    right: 0%;
+    position: absolute;
+    bottom: 50%;
+    border-radius: 5px 0px 0px 5px;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.expand2:hover {
+    background-color: black;
+    color: white;
+}
+
+
+
+/*############################*/
+/*          GAME              */
+/*############################*/
+
+
+.game {
+    text-align: center;
+    flex: 5;
+    height: 100%;
+    margin-top: 5vh;
+}
+img {
+    width: 50vw;
+    margin-bottom: 20px;
+}
+
+.submit {
+    margin: 2px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.submit:hover {
+    background-color: black;
+    color: white;
+}
+
+button {
+    font-family: Archivo;
+}
+
+input {
+    padding: 10px;
+    border: 0px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: Archivo;
+}
+.solution {
+    text-align: center;
+    background-color: white;
+    padding: 7px;
+    border-radius: 10px;
+    width: 40vh;
+    display: none;
 }

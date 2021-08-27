@@ -1,5 +1,131 @@
 
+/////////////////////////////////
+//             GAME            //
+/////////////////////////////////
+
+var mode;
+var subject;
+var randomint;
+var arrayAnswers = [];
+var currentAnswer;
+var last = 1;
+
+// Antworten für Kanton Mode (Array)
+let cantonAnswers = ["Zürich", "Bern", "Luzern", "Uri", "Schwyz", "Obwalden", "Nidwalden", "Glarus", "Zug", "Freiburg", "Solothurn", "Basel Stadt", "Basel Land", "Schaffhausen", "Appenzell Ausserrhoden", "Appenzell Innerrhoden", "Sankt Gallen", "Graubünden", "Aargau", "Thurgau", "Tessin", "Waadt", "Wallis", "Neuenburg", "Genf", "Jura"];
+
+// Antworten für Stadt Mode (Array)
+let stadtAnswers = ["Aarau", "Herisau", "Appenzell", "Liestal", "Basel", "Bern", "Biel", "Thun", "Freiburg", "Genf", "Glarus", "Chur", "Delémont", "Luzern", "La Chaux-de-Fonds", "Neuenburg", "Stans", "Sarnen", "Schaffhausen", "Schwyz", "Olten", "Solothurn", "Sankt Gallen", "Bellinzona", "Chiasso", "Lugano", "Frauenfeld", "Altdorf", "Lausanne", "Sion", "Zug", "Winterthur", "Zürich"];
+
+// Antworten für Pass Mode (Array)
+let passAnwers = ["Bernina", "Bözberg", "Col du Mollendruz", "Furka", "Gemmi", "Gotthard", "Greina", "Grimsel", "Grosser Sankt Bernhard", "Hauenstein", "Julier", "Lötschberg", "Lukmanier", "Maloja", "Monte Moro", "Nufenen", "Ofen", "Panixer", "San Bernadino", "Septimer", "Simplon", "Vue des Alpes"];
+
+// Antworten für Seen Mode (Array)
+let seenAnswers = ["Bielersee", "Bodensee", "Genfersee", "Langensee", "Luganersee", "Neuenburgersee", "Sankt Moritzersee", "Thunersee", "Vierwaldstättersee", "Walensee", "Zugersee", "Zürichsee"];
+
+// Antworten für Fluss Mode (Array)
+let flussAnswers = ["Aare", "Birs", "Broye", "Doubs", "Grosse Emme", "Hinterrhein", "Inn", "Kander", "Kleine Emme", "Landquart", "Limmat", "Linth", "Maggia", "Reuss", "Rhein", "Rhone", "Saane", "Simme", "Sitter", "Tessin", "Thur", "Vorderrhein"];
+
+// Antworten für Berge, Gebirge Mode (Array)
+let bergAnswers = ["Alpen", "Chasseral", "Churfirsten", "Dom", "Dufourspitze", "Eiger", "Jungfrau", "Jura", "Les Diablerets", "Matterhorn", "Mythen", "Napf", "Pilatus", "Piz Bernina", "Rigi", "San Salvatore", "Säntis", "Weissenstein"];
+
+// Antworten für Special Mode (Array)
+let specialAnswers = ["Berner Oberland", "Engadin", "Mittelland", "Seeland"];
+
+
+function setMode(inputmode, buttonId) {
+
+    // set all button to normal
+    document.getElementById(101).style.backgroundColor = "white";
+    document.getElementById(102).style.backgroundColor = "white";
+    document.getElementById(103).style.backgroundColor = "white";
+
+    document.getElementById(buttonId).style.backgroundColor = "#6cb104";
+    // set the mode in var
+    mode = inputmode;
+
+    if(subject != null) {
+        Game();
+    }
+
+    return mode;
+}
+
+function setSubject(inputsubject, buttonId) {
+    for (let i = 1; i < 8; i++) {
+        document.getElementById("20" + i).style.backgroundColor = "white";
+    }
+
+    document.getElementById(buttonId).style.backgroundColor = "#2d73f3";
+
+    // set the subject in var
+    subject = inputsubject;
+
+    switch(inputsubject) {
+        case "kantone":  
+            arrayAnswers = cantonAnswers;
+            break;
+        case "staedte":  
+            arrayAnswers = stadtAnswers;
+            break;
+        case "paesse":
+            arrayAnswers = passAnwers;
+            break;
+        case "seen":
+            arrayAnswers = seenAnswers;
+            break;
+        case "fluesse":
+            arrayAnswers = flussAnswers;
+            break;
+        case "berge":
+            arrayAnswers = bergAnswers;
+            break;
+        case "special":
+            arrayAnswers = specialAnswers;
+            break;
+    }
+    
+
+    if(mode != null) {
+        Game();
+    }
+
+
+    return subject, arrayAnswers;
+}
+
+function Game() {
+    // endless
+
+    if(mode === "endless") {
+        
+        // create Random number
+        randomNumber = Math.floor(Math.random() * arrayAnswers.length + 1);
+
+        if(randomNumber === last) {
+            randomNumber = Math.floor(Math.random() * arrayAnswers.length + 1);
+
+            if(randomNumber == last) {
+                randomNumber = Math.floor(Math.random() * arrayAnswers.length + 1);
+            }
+        }
+
+        last = randomNumber;
+
+        // Select PNG
+        document.getElementById(1000).src = "images/" + subject + "/" +  arrayAnswers[randomNumber - 1] + ".jpg"
+        // make answer
+        currentAnswer = arrayAnswers[randomNumber - 1];
+
+        // repeat!
+        return last, randomNumber, currentAnswer;
+
+    }
+}
+
+
+
 document.getElementById(400).style.display = "none";
+document.getElementById(700).style.display = "none";
 
 // hide Menu
 function hideMenu() {
@@ -30,6 +156,48 @@ function expandMenu() {
     menu.animate(animation, timing);
     document.getElementById(400).style.display = "none";
 }
+
+
+
+
+
+function hideInfo() {
+    var menu = document.getElementById(800);
+    var animation = [
+        {transform: "translateX(100%)"}
+    ];
+    var timing = {
+        duration: 500,
+        fill: 'forwards',
+        iterations: 1
+    }
+    menu.animate(animation, timing);
+    setTimeout(function() { document.getElementById(700).style.display = "block"; }, 500);
+}
+
+function expandInfo() {
+    var menu = document.getElementById(800);
+    var animation = [
+        {transform: "translateX(0%)"}
+        
+    ];
+    var timing = {
+        duration: 500,
+        fill: 'forwards',
+        iterations: 1
+    }
+    menu.animate(animation, timing);
+    document.getElementById(700).style.display = "none";
+}
+
+
+
+
+
+
+
+
+
 
 var counter = 1;
 function showCorrect(name) {
