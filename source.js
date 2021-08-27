@@ -34,6 +34,10 @@ function expandMenu() {
 var counter = 1;
 function showCorrect(name) {
 
+    if(counter == 1) {
+        document.getElementById(502).innerHTML = " ";
+    }
+
     // Create a new Element to host all informations
     var container = document.getElementById(501);
     var p = document.createElement("p");
@@ -50,21 +54,80 @@ function showCorrect(name) {
 
 
 
-// Multilingual Shit
-var language = {
-    en: {
-        credit: "created by Sprudeel"
-    },
-    de: {
-        credit: "erstellt von Sprudeel"
-    }
-};
+setInterval(() => {
+    var date = new Date();
+    var weekdays = ["filler", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+    var months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+
+    var displaydate = weekdays[date.getDay()] + " " + date.getDate() + ". " + months[date.getMonth()] + " " + date.getFullYear() + "<br>" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(); 
+
+    document.getElementById(600).innerHTML = displaydate;
+    
+}, 10);
 
 
-if (window.location.hash) {
-    if (window.location.hash === "#de") {
-        credit.textContent = language.de.credit;
+
+
+
+//############################//
+//           TIMER            //
+//############################//
+const timer = document.getElementById(690);
+
+var hr = 0;
+var min = 0;
+var sec = 0;
+var stoptime = true;
+
+function startTimer() {
+  if (stoptime == true) {
+        stoptime = false;
+        timerCycle();
+    } else {
+        stoptime = true;
     }
 }
 
+function timerCycle() {
+    if (stoptime == false) {
+    sec = parseInt(sec);
+    min = parseInt(min);
+    hr = parseInt(hr);
 
+    sec = sec + 1;
+
+    if (sec == 60) {
+      min = min + 1;
+      sec = 0;
+    }
+    if (min == 60) {
+      hr = hr + 1;
+      min = 0;
+      sec = 0;
+    }
+
+    if (sec < 10 || sec == 0) {
+      sec = '0' + sec;
+    }
+    if (min < 10 || min == 0) {
+      min = '0' + min;
+    }
+    if (hr < 10 || hr == 0) {
+      hr = '0' + hr;
+    }
+
+    timer.innerHTML = hr + ':' + min + ':' + sec;
+
+    setTimeout("timerCycle()", 1000);
+  }
+}
+
+function resetTimer() {
+    timer.innerHTML = '00:00:00';
+    stoptime = true;
+    hr = 0;
+    min = 0;
+    sec = 0;
+
+    return hr, min, sec;
+}

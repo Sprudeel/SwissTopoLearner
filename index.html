@@ -11,7 +11,7 @@
     <title>SwissTopoLearner</title>
     <link rel="stylesheet" href="style.css">
     <div class="title">
-        <div class="version">Version 2.0 <a href="#de">de</a></div>
+        <div class="version">Version 2.0</div>
         <div class="name">Swiss Topo Learner</div>
         <div class="credit" id="credit">created by <a href="https://github.com/Sprudeel">@Sprudeel</a></div>
     </div>
@@ -19,14 +19,14 @@
 <body>
     <div class="content">
         <div class="menu" id="99">
-            <div class="choosemode">Choose Mode <span title="Choose from one of the Modes listed below &#013; 1. Endless - Random Questions and Endless! &#013; 2. Speed - 10 different Questions timed! &#013; 3. Learn - All Questions once with no Question twice!"class="material-icons md-small png">help_outline</span></div>
+            <div class="choosemode">Modus auswählen <span title="Choose from one of the Modes listed below &#013; 1. Endless - Random Questions and Endless! &#013; 2. Speed - 10 different Questions timed! &#013; 3. Learn - All Questions once with no Question twice!"class="material-icons md-small png">help_outline</span></div>
             <button id="101" onclick="mode(1)" class="mode">Endless</button>
             <br>
             <button id="102" class="mode">Speed</button>
             <br>
             <button id="103" class="mode">Learn</button>
 
-            <div class="choosemode">Choose Topic <span title="Choose what you want to learn (self explanatory)" class="material-icons md-small png">help_outline</span></div>
+            <div class="choosemode">Thema Auswählen <span title="Choose what you want to learn (self explanatory)" class="material-icons md-small png">help_outline</span></div>
             <button id="201" class="choose" onclick="changeMode(1)">Kantone</button>
             <br>
             <button id="202" class="choose" onclick="changeMode(2)">Städte</button>
@@ -41,7 +41,7 @@
             <br>
             <button id="207" class="choose" onclick="changeMode(7)">Spezielle Gebiete</button>
             <br>
-            <button id="300" class="close" onclick="hideMenu()"><span class="material-icons md-18 png">chevron_left</span>Close Menu</button>    
+            <button id="300" class="close" onclick="hideMenu()"><span class="material-icons md-18 png">chevron_left</span>Menu schliessen</button>    
         </div>  
         <div class="game">
             GAME
@@ -50,22 +50,33 @@
             <div class="info1">
                 <div class="subtitle">
                     <h3>
-                        <span class="subtitle">Correctly Solved</span>
+                        <span class="subtitle">Korrekt gelöst</span>
                     </h3>
                 </div>
                 <div class="correct-container" id="500">
+                    <p id="502" style="color: red; text-align: center;">keine</p>
                     <p id=501></p>
                 </div>
             </div>  
             <div class="info2">
-                <div class="currenttime">00:00</div>
+                <div class="subtitle">
+                    <h3>
+                        <span class="subtitle">Stoppuhr</span>
+                    </h3>
+                </div>
+                <div class="currenttime" id="690">00:00:00</div>
                 <div class="timebtn">
-                    <button>Start / Pause</button> 
-                    <button>Reset</button>
+                    <button class="close pad" onclick="startTimer()">Start / Pause</button> 
+                    <button class="close pad" onclick="resetTimer()">Reset</button>
                 </div>
             </div>
             <div class="info3">
-                SETTINGS
+                <div class="subtitle">
+                    <h3>
+                        <span class="subtitle">Datum und Zeit</span>
+                    </h3>
+                </div>
+                <div class="time" id="600"></div>
             </div>
         </div>  
     </div>
