@@ -262,6 +262,7 @@ h3 span {
 img {
     width: 50vw;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 3px 3px #0000006e;
 }
 
 .submit {

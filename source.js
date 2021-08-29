@@ -1,7 +1,9 @@
 
+
 /////////////////////////////////
 //             GAME            //
 /////////////////////////////////
+
 
 var mode;
 var subject;
@@ -9,6 +11,7 @@ var randomint;
 var arrayAnswers = [];
 var currentAnswer;
 var last = 1;
+
 
 // Antworten für Kanton Mode (Array)
 let cantonAnswers = ["Zürich", "Bern", "Luzern", "Uri", "Schwyz", "Obwalden", "Nidwalden", "Glarus", "Zug", "Freiburg", "Solothurn", "Basel Stadt", "Basel Land", "Schaffhausen", "Appenzell Ausserrhoden", "Appenzell Innerrhoden", "Sankt Gallen", "Graubünden", "Aargau", "Thurgau", "Tessin", "Waadt", "Wallis", "Neuenburg", "Genf", "Jura"];
@@ -30,6 +33,7 @@ let bergAnswers = ["Alpen", "Chasseral", "Churfirsten", "Dom", "Dufourspitze", "
 
 // Antworten für Special Mode (Array)
 let specialAnswers = ["Berner Oberland", "Engadin", "Mittelland", "Seeland"];
+
 
 
 function setMode(inputmode, buttonId) {
@@ -95,8 +99,13 @@ function setSubject(inputsubject, buttonId) {
 
 function Game() {
     // endless
+    document.getElementById(1000).style.boxShadow = "0px 0px 3px 3px #0000006e";
+    document.getElementById(420).style.boxShadow = "none";
+    document.getElementById(420).value = "";
+
 
     if(mode === "endless") {
+        document.getElementById(1000).src = "images/loading.jpg";
         
         // create Random number
         randomNumber = Math.floor(Math.random() * arrayAnswers.length + 1);
@@ -112,7 +121,10 @@ function Game() {
         last = randomNumber;
 
         // Select PNG
-        document.getElementById(1000).src = "images/" + subject + "/" +  arrayAnswers[randomNumber - 1] + ".jpg"
+        setTimeout(() => {
+            document.getElementById(1000).src = "images/" + subject + "/" +  arrayAnswers[randomNumber - 1] + ".jpg"
+        }, 200); 
+        
         // make answer
         currentAnswer = arrayAnswers[randomNumber - 1];
 
@@ -122,7 +134,23 @@ function Game() {
     }
 }
 
+function checkSolution() {
 
+    if(currentAnswer.toLowerCase() == document.getElementById(420).value.toLowerCase()) {
+        
+        document.getElementById(1000).style.boxShadow = "0px 0px 10px 10px #2aaf1eb2";
+        document.getElementById(420).style.boxShadow = "0px 0px 10px 10px #2aaf1eb2";
+        showCorrect(currentAnswer);
+
+
+        setTimeout(() => {
+            Game();
+        }, 1000); 
+    } else {
+        document.getElementById(1000).style.boxShadow = "0px 0px 10px 10px #b91313ce";
+        document.getElementById(420).style.boxShadow = "0px 0px 10px 10px #b91313ce";
+    }
+}
 
 document.getElementById(400).style.display = "none";
 document.getElementById(700).style.display = "none";
@@ -224,7 +252,7 @@ function showCorrect(name) {
 
 setInterval(() => {
     var date = new Date();
-    var weekdays = ["filler", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+    var weekdays = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
     var months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 
     var displaydate = weekdays[date.getDay()] + " " + date.getDate() + ". " + months[date.getMonth()] + " " + date.getFullYear() + "<br>" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(); 
