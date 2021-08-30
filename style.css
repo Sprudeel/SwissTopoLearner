@@ -302,3 +302,16 @@ input {
     width: 40vh;
     display: none;
 }
+
+
+.text {
+    display: inline-block;
+    font-family: Archivo;
+    background-color: white;
+    font-size: 14px;
+    padding: 7px;
+    border-radius: 5px;
+    width: 70%;
+    color: #6cb104;
+    
+}

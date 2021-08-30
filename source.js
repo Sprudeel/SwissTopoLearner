@@ -23,7 +23,7 @@ let stadtAnswers = ["Aarau", "Herisau", "Appenzell", "Liestal", "Basel", "Bern",
 let passAnwers = ["Bernina", "Bözberg", "Col du Mollendruz", "Furka", "Gemmi", "Gotthard", "Greina", "Grimsel", "Grosser Sankt Bernhard", "Hauenstein", "Julier", "Lötschberg", "Lukmanier", "Maloja", "Monte Moro", "Nufenen", "Ofen", "Panixer", "San Bernadino", "Septimer", "Simplon", "Vue des Alpes"];
 
 // Antworten für Seen Mode (Array)
-let seenAnswers = ["Bielersee", "Bodensee", "Genfersee", "Langensee", "Luganersee", "Neuenburgersee", "Sankt Moritzersee", "Thunersee", "Vierwaldstättersee", "Walensee", "Zugersee", "Zürichsee"];
+let seenAnswers = ["Bielersee", "Bodensee", "Genfersee", "Langensee", "Luganersee", "Neuenburgersee", "Sankt Moritzersee", "Thunersee", "Vierwaldstaettersee", "Walensee", "Zugersee", "Zürichsee"];
 
 // Antworten für Fluss Mode (Array)
 let flussAnswers = ["Aare", "Birs", "Broye", "Doubs", "Grosse Emme", "Hinterrhein", "Inn", "Kander", "Kleine Emme", "Landquart", "Limmat", "Linth", "Maggia", "Reuss", "Rhein", "Rhone", "Saane", "Simme", "Sitter", "Tessin", "Thur", "Vorderrhein"];
@@ -98,6 +98,9 @@ function setSubject(inputsubject, buttonId) {
 }
 
 function Game() {
+
+    document.getElementById(222).className = " ";
+    document.getElementById(222).innerHTML = "<button class='submit' onclick='showSolution()'>Lösung Anzeigen</button>";
     // endless
     document.getElementById(1000).style.boxShadow = "0px 0px 3px 3px #0000006e";
     document.getElementById(420).style.boxShadow = "none";
@@ -151,6 +154,20 @@ function checkSolution() {
         document.getElementById(420).style.boxShadow = "0px 0px 10px 10px #b91313ce";
     }
 }
+
+
+function showSolution() {
+    // remove button
+    document.getElementById(222).className = "text";
+    document.getElementById(222).innerHTML = currentAnswer;
+}
+
+
+
+
+
+
+
 
 document.getElementById(400).style.display = "none";
 document.getElementById(700).style.display = "none";
