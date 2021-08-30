@@ -14,22 +14,22 @@ var last = 1;
 
 
 // Antworten für Kanton Mode (Array)
-let cantonAnswers = ["Zürich", "Bern", "Luzern", "Uri", "Schwyz", "Obwalden", "Nidwalden", "Glarus", "Zug", "Freiburg", "Solothurn", "Basel Stadt", "Basel Land", "Schaffhausen", "Appenzell Ausserrhoden", "Appenzell Innerrhoden", "Sankt Gallen", "Graubünden", "Aargau", "Thurgau", "Tessin", "Waadt", "Wallis", "Neuenburg", "Genf", "Jura"];
+let cantonAnswers = ["Zuerich", "Bern", "Luzern", "Uri", "Schwyz", "Obwalden", "Nidwalden", "Glarus", "Zug", "Freiburg", "Solothurn", "Basel Stadt", "Basel Land", "Schaffhausen", "Appenzell Ausserrhoden", "Appenzell Innerrhoden", "Sankt Gallen", "Graubuenden", "Aargau", "Thurgau", "Tessin", "Waadt", "Wallis", "Neuenburg", "Genf", "Jura"];
 
 // Antworten für Stadt Mode (Array)
-let stadtAnswers = ["Aarau", "Herisau", "Appenzell", "Liestal", "Basel", "Bern", "Biel", "Thun", "Freiburg", "Genf", "Glarus", "Chur", "Delémont", "Luzern", "La Chaux-de-Fonds", "Neuenburg", "Stans", "Sarnen", "Schaffhausen", "Schwyz", "Olten", "Solothurn", "Sankt Gallen", "Bellinzona", "Chiasso", "Lugano", "Frauenfeld", "Altdorf", "Lausanne", "Sion", "Zug", "Winterthur", "Zürich"];
+let stadtAnswers = ["Aarau", "Herisau", "Appenzell", "Liestal", "Basel", "Bern", "Biel", "Thun", "Freiburg", "Genf", "Glarus", "Chur", "Delémont", "Luzern", "La Chaux-de-Fonds", "Neuenburg", "Stans", "Sarnen", "Schaffhausen", "Schwyz", "Olten", "Solothurn", "Sankt Gallen", "Bellinzona", "Chiasso", "Lugano", "Frauenfeld", "Altdorf", "Lausanne", "Sion", "Zug", "Winterthur", "Zuerich"];
 
 // Antworten für Pass Mode (Array)
-let passAnwers = ["Bernina", "Bözberg", "Col du Mollendruz", "Furka", "Gemmi", "Gotthard", "Greina", "Grimsel", "Grosser Sankt Bernhard", "Hauenstein", "Julier", "Lötschberg", "Lukmanier", "Maloja", "Monte Moro", "Nufenen", "Ofen", "Panixer", "San Bernadino", "Septimer", "Simplon", "Vue des Alpes"];
+let passAnwers = ["Bernina", "Boezberg", "Col du Mollendruz", "Furka", "Gemmi", "Gotthard", "Greina", "Grimsel", "Grosser Sankt Bernhard", "Hauenstein", "Julier", "Loetschberg", "Lukmanier", "Maloja", "Monte Moro", "Nufenen", "Ofen", "Panixer", "San Bernadino", "Septimer", "Simplon", "Vue des Alpes"];
 
 // Antworten für Seen Mode (Array)
-let seenAnswers = ["Bielersee", "Bodensee", "Genfersee", "Langensee", "Luganersee", "Neuenburgersee", "Sankt Moritzersee", "Thunersee", "Vierwaldstaettersee", "Walensee", "Zugersee", "Zürichsee"];
+let seenAnswers = ["Bielersee", "Bodensee", "Genfersee", "Langensee", "Luganersee", "Neuenburgersee", "Sankt Moritzersee", "Thunersee", "Vierwaldstaettersee", "Walensee", "Zugersee", "Zuerichsee"];
 
 // Antworten für Fluss Mode (Array)
 let flussAnswers = ["Aare", "Birs", "Broye", "Doubs", "Grosse Emme", "Hinterrhein", "Inn", "Kander", "Kleine Emme", "Landquart", "Limmat", "Linth", "Maggia", "Reuss", "Rhein", "Rhone", "Saane", "Simme", "Sitter", "Tessin", "Thur", "Vorderrhein"];
 
 // Antworten für Berge, Gebirge Mode (Array)
-let bergAnswers = ["Alpen", "Chasseral", "Churfirsten", "Dom", "Dufourspitze", "Eiger", "Jungfrau", "Jura", "Les Diablerets", "Matterhorn", "Mythen", "Napf", "Pilatus", "Piz Bernina", "Rigi", "San Salvatore", "Säntis", "Weissenstein"];
+let bergAnswers = ["Alpen", "Chasseral", "Churfirsten", "Dom", "Dufourspitze", "Eiger", "Jungfrau", "Jura", "Les Diablerets", "Matterhorn", "Mythen", "Napf", "Pilatus", "Piz Bernina", "Rigi", "San Salvatore", "Saentis", "Weissenstein"];
 
 // Antworten für Special Mode (Array)
 let specialAnswers = ["Berner Oberland", "Engadin", "Mittelland", "Seeland"];
@@ -110,7 +110,6 @@ function Game() {
     if(mode === "endless") {
         document.getElementById(1000).src = "images/loading.jpg";
         
-        // create Random number
         randomNumber = Math.floor(Math.random() * arrayAnswers.length + 1);
 
         if(randomNumber === last) {
@@ -123,15 +122,21 @@ function Game() {
 
         last = randomNumber;
 
-        // Select PNG
         setTimeout(() => {
             document.getElementById(1000).src = "images/" + subject + "/" +  arrayAnswers[randomNumber - 1] + ".jpg"
         }, 200); 
         
-        // make answer
         currentAnswer = arrayAnswers[randomNumber - 1];
 
-        // repeat!
+        // change ae oe and ue to ä ö and ü
+        if(currentAnswer.includes("ue")) {
+            currentAnswer = currentAnswer.replace("ue", "ü");
+        } else if(currentAnswer.includes("ae")) {
+            currentAnswer = currentAnswer.replace("ae", "ä");
+        } else if(currentAnswer.includes("oe")) {
+            currentAnswer = currentAnswer.replace("oe", "ö");
+        } 
+
         return last, randomNumber, currentAnswer;
 
     }
@@ -344,3 +349,15 @@ function resetTimer() {
 
     return hr, min, sec;
 }
+
+
+
+
+// LISTENER
+let input = document.querySelector('input');
+
+document.addEventListener("keypress", function(event) {
+    if(event.keyCode === 13) {
+        checkSolution();
+    }
+})
