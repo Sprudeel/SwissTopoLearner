@@ -11,6 +11,10 @@ var randomint;
 var arrayAnswers = [];
 var currentAnswer;
 var last = 1;
+var started = false;
+var going = false;
+var correct = 0;
+var length;
 
 
 // Antworten für Kanton Mode (Array)
@@ -50,8 +54,8 @@ function setMode(inputmode, buttonId) {
     if(subject != null) {
         Game();
     }
-
-    return mode;
+    started = false;
+    return mode, started;
 }
 
 function setSubject(inputsubject, buttonId) {
@@ -98,15 +102,19 @@ function setSubject(inputsubject, buttonId) {
 }
 
 function Game() {
+    document.getElementById(555).style.display = "inline-block";
+    document.getElementById(556).style.display = "inline-block";
 
+    // Reset show Solution Button
     document.getElementById(222).className = " ";
     document.getElementById(222).innerHTML = "<button class='submit' onclick='showSolution()'>Lösung Anzeigen</button>";
-    // endless
+
+    // Reset Box Shadows and Answer
     document.getElementById(1000).style.boxShadow = "0px 0px 3px 3px #0000006e";
     document.getElementById(420).style.boxShadow = "none";
     document.getElementById(420).value = "";
 
-
+    // ENDLESS MODE
     if(mode === "endless") {
         document.getElementById(1000).src = "images/loading.jpg";
         
@@ -143,6 +151,106 @@ function Game() {
 
         return last, randomNumber, currentAnswer;
 
+    } else if(mode == "speed") {
+
+        // START SCREEN
+        if(started == false) {
+            hideMenu();
+            document.getElementById(555).style.display = "none";
+            document.getElementById(556).style.display = "none";
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("overlay").innerHTML = "<p class='textoverlay2'>3</p>";
+
+            setTimeout(() => {
+                document.getElementById("overlay").innerHTML = "<p class='textoverlay2'>2</p>";
+            }, 1000);
+
+            setTimeout(() => {
+                document.getElementById("overlay").innerHTML = "<p class='textoverlay2'>1</p>";
+            }, 2000);
+
+            setTimeout(() => {
+                document.getElementById("overlay").innerHTML = "<p class='textoverlay2'>GO!</p>";
+            }, 3000);
+
+            setTimeout(() => {
+                document.getElementById("overlay").style.display = "none";
+                startTimer();
+            }, 3300);
+
+            started = true;
+        }
+
+        document.getElementById(1000).src = "images/loading.jpg";
+        
+        randomNumber = Math.floor(Math.random() * arrayAnswers.length + 1);
+
+        if(randomNumber === last) {
+            randomNumber = Math.floor(Math.random() * arrayAnswers.length + 1);
+
+            if(randomNumber == last) {
+                randomNumber = Math.floor(Math.random() * arrayAnswers.length + 1);
+            }
+        }
+        currentAnswer = arrayAnswers[randomNumber - 1];
+        last = randomNumber;
+        let picturename = currentAnswer;
+
+        // change ae oe and ue to ä ö and ü
+        if(picturename.includes("ä")) {
+            picturename = picturename.replace("ä", "ae");
+        } else if(picturename.includes("ö")) {
+            picturename = picturename.replace("ö", "oe");
+        } else if(picturename.includes("ü")) {
+            picturename = picturename.replace("ü", "ue");
+        } 
+
+
+        setTimeout(() => {
+            document.getElementById(1000).src = "images/" + subject + "/" +  picturename + ".jpg"
+        }, 200); 
+        
+        
+
+        
+
+        return started, last, randomNumber, currentAnswer;
+
+
+
+    } else if (mode == "learn") {
+        if(started == false) {
+            length = arrayAnswers.length;
+        }
+        document.getElementById(333).innerHTML = "Korrekt gelöst " + correct + "/" + length;
+
+
+        document.getElementById(1000).src = "images/loading.jpg";
+
+        randomNumber = Math.floor(Math.random() * arrayAnswers.length + 1);
+
+
+        currentAnswer = arrayAnswers[randomNumber - 1];
+        last = randomNumber;
+        let picturename = currentAnswer;
+
+        // change ae oe and ue to ä ö and ü
+        if(picturename.includes("ä")) {
+            picturename = picturename.replace("ä", "ae");
+        } else if(picturename.includes("ö")) {
+            picturename = picturename.replace("ö", "oe");
+        } else if(picturename.includes("ü")) {
+            picturename = picturename.replace("ü", "ue");
+        } 
+        started = true;
+
+        setTimeout(() => {
+            document.getElementById(1000).src = "images/" + subject + "/" +  picturename + ".jpg"
+        }, 200); 
+
+        
+
+        return length, last, randomNumber, currentAnswer;
     }
 }
 
@@ -153,7 +261,7 @@ function checkSolution() {
         document.getElementById(1000).style.boxShadow = "0px 0px 10px 10px #2aaf1eb2";
         document.getElementById(420).style.boxShadow = "0px 0px 10px 10px #2aaf1eb2";
         showCorrect(currentAnswer);
-
+        correct++;
 
         setTimeout(() => {
             Game();
@@ -162,6 +270,13 @@ function checkSolution() {
         document.getElementById(1000).style.boxShadow = "0px 0px 10px 10px #b91313ce";
         document.getElementById(420).style.boxShadow = "0px 0px 10px 10px #b91313ce";
     }
+
+    if (mode == "learn") {
+        arrayAnswers.splice((randomNumber - 1), 1);
+
+        return arrayAnswers;
+    }
+
 }
 
 
@@ -338,7 +453,19 @@ function timerCycle() {
       hr = '0' + hr;
     }
 
-    timer.innerHTML = hr + ':' + min + ':' + sec;
+    if(mode == "speed") {
+        going = true;
+        timer.innerHTML = hr + ':' + min + ':' + (60 -sec);
+        if(min == 1) {
+            stoptime = true;
+            going = false;
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("overlay").innerHTML = "<p class='textoverlay'>Ende!<span class='material-icons md-18 '>celebration</span><br>Korrekt gelöst: " + correct + " <button class='close' onclick='closeOverlay()'>Info schliessen</button> </p>" 
+            resetTimer();
+        }
+    } else {
+        timer.innerHTML = hr + ':' + min + ':' + sec;
+    }
 
     setTimeout("timerCycle()", 1000);
   }
@@ -365,3 +492,6 @@ document.addEventListener("keypress", function(event) {
         checkSolution();
     }
 })
+
+
+function closeOverlay() {document.getElementById("overlay").style.display = "none";}
