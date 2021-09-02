@@ -93,12 +93,20 @@ function setSubject(inputsubject, buttonId) {
     }
     
 
+
+    
+    length = arrayAnswers.length;
+    
+
+
     if(mode != null) {
         Game();
     }
 
+    
 
-    return subject, arrayAnswers;
+    started = false;
+    return subject, arrayAnswers, started, length;
 }
 
 function Game() {
@@ -219,9 +227,15 @@ function Game() {
 
 
     } else if (mode == "learn") {
-        if(started == false) {
-            length = arrayAnswers.length;
+        
+
+
+        if(correct == length) {
+            document.getElementById(1000).src = "images/finish.jpg";
+            document.getElementById(333).innerHTML = "Korrekt gelöst " + correct + "/" + length;
+            return last, randomNumber, currentAnswer;
         }
+
         document.getElementById(333).innerHTML = "Korrekt gelöst " + correct + "/" + length;
 
 
@@ -250,7 +264,7 @@ function Game() {
 
         
 
-        return length, last, randomNumber, currentAnswer;
+        return last, randomNumber, currentAnswer, started;
     }
 }
 
@@ -266,6 +280,12 @@ function checkSolution() {
         setTimeout(() => {
             Game();
         }, 1000); 
+
+        if (mode == "learn") {
+            arrayAnswers.splice((randomNumber - 1), 1);
+    
+            return arrayAnswers;
+        }
     } else {
         document.getElementById(1000).style.boxShadow = "0px 0px 10px 10px #b91313ce";
         document.getElementById(420).style.boxShadow = "0px 0px 10px 10px #b91313ce";
