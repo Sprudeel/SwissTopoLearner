@@ -48,7 +48,7 @@
                 <img id="1000" src="images/normal.jpg" alt="">
             </div>
             <div class="input">
-                <input type="" placeholder="Lösung?" id="420"> <button class="submit" onclick="checkSolution()">Check</button>
+                <input type="" placeholder="Lösung?" id="420"> <button class="submit" id="421" onclick="checkSolution()">Check</button>
                 <br> <div id="222"><button class="submit" onclick="showSolution()">Lösung Anzeigen</button></div>
             </div>
 
@@ -102,7 +102,16 @@
         </button>
     </div>
     <div id="overlay">
-        
+        <div class='textoverlay'>
+            <b class="end"><span class='material-icons md-18 '>celebration</span> Zeit um! <span class='material-icons md-18 '>celebration</span></b>
+            <br>
+            <br>
+            <div class="daten">Gesamelte Daten:</div>
+            <div class="correct">gesamte Zeit: X <br> Korrekt gelöst: <br> Ø Zeit pro Aufgabe: X</div>
+            <br>
+            <div class="aneq">Vielleicht solltest du noch ein wenig üben...</div>
+            <button class='close' onclick='closeOverlay()'>Info schliessen</button> 
+        </div>
         
     </div>
     

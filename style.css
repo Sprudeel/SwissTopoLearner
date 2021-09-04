@@ -251,8 +251,6 @@ h3 span {
 /*############################*/
 /*          GAME              */
 /*############################*/
-
-
 .game {
     text-align: center;
     flex: 5;
@@ -320,7 +318,7 @@ input {
 /* OVERLAY */
 #overlay {
     position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
+    display: block; /* Hidden by default */
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
     top: 0;
@@ -335,14 +333,13 @@ input {
     text-align: center;
     float: middle;
     background-color: white;
-    margin-left: 20vh;
+    margin-left: 10vh;
     padding: 10px;
     border-radius: 10px;
-    margin-right: 20vh;
-    margin-top: 40vh;
+    margin-right: 10vh;
+    margin-top: 30vh;
     font-family: Archivo;
     font-size: 30px;
-    color: rgb(197, 48, 48);
 }
 .textoverlay2 {
     text-align: center;
@@ -350,4 +347,30 @@ input {
     font-family: Archivo;
     font-size: 40px;
     color: rgb(199, 23, 23);
+}
+.end {
+    color: black;
+    padding: 10px;
+    white-space: nowrap;
+    
+}
+
+.correct {
+    padding: 10px;
+    border: black solid;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.aneq {
+    font-size: 20px;
+    color: crimson;
+}
+.daten {
+    font-size: 25px;
+    text-align: left;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
