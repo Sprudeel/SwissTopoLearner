@@ -41,6 +41,9 @@ let specialAnswers = ["Berner Oberland", "Engadin", "Mittelland", "Seeland"];
 
 
 function setMode(inputmode, buttonId) {
+    resetTimer();
+    counter = 1;
+    document.getElementById(500).innerHTML = "<p id='502' style='color: red; text-align: center;'>keine</p><p id=501></p>";
 
     // set all button to normal
     document.getElementById(101).style.backgroundColor = "white";
@@ -54,11 +57,17 @@ function setMode(inputmode, buttonId) {
     if(subject != null) {
         Game();
     }
-    started = false;
+
+    if(started == true) {
+        startes = false;
+    }
     return mode, started;
 }
 
 function setSubject(inputsubject, buttonId) {
+    resetTimer();
+    counter = 1;
+    document.getElementById(500).innerHTML = "<p id='502' style='color: red; text-align: center;'>keine</p><p id=501></p>";
     for (let i = 1; i < 8; i++) {
         document.getElementById("20" + i).style.backgroundColor = "white";
     }
