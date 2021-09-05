@@ -319,6 +319,7 @@ function Game() {
             }
         }
 
+        
 
         // Set current Answers Var for CheckSolution
         currentAnswer = arrayAnswers[randomNumber - 1];
