@@ -682,9 +682,38 @@ function timerCycle() {
         if(min == 1) {
             stoptime = true;
             going = false;
+
+            // MAKE ENd SCREEN 
+
+            let averagetime = (60.00 / correct).toFixed(2);
+            var aneq = "Lorem Ipsum";
+
+            document.getElementById("overlay").innerHTML = "<div class='textoverlay'><b class='end'><span class='material-icons md-18 '>celebration</span> Zeit um! <span class='material-icons md-18 '>celebration</span></b><br><br><div class='daten'>Gesammelte Daten:</div><div class='correct'>gesamte Zeit: 1min <br> Korrekt gelöst: " + correct + "<br> Ø Zeit pro Aufgabe: " + averagetime + " sec</div><br><div id='999' class='aneq'>" + aneq + "</div><button class='close' onclick='closeOverlay()'>Info schliessen</button> </div><canvas id='my-canvas'></canvas>";
+
+
+            if(correct < 6) {
+                document.getElementById(999).innerHTML = "Vielleicht solltest du noch ein wenig üben...";
+                document.getElementById(999).style.color = "crimson";
+            } else if(correct > 6 && correct < 10) {
+                document.getElementById(999).innerHTML = "Du bist auf einem guten Weg!"
+                document.getElementById(999).style.color = "orange";
+            } else if(correct > 10 && correct < 15) {
+                document.getElementById(999).innerHTML = "WOW! Du bist gut!"
+                document.getElementById(999).style.color = "green";
+            } else if(correct > 15) {
+                document.getElementById(999).innerHTML = "UNFASSBAR! Du bist unaufhaltbar!"
+                document.getElementById(999).style.color = "gold";
+            }
             document.getElementById("overlay").style.display = "block";
-            document.getElementById("overlay").innerHTML = "<p class='textoverlay'>Ende!<span class='material-icons md-18 '>celebration</span><br>Korrekt gelöst: " + correct + " <button class='close' onclick='closeOverlay()'>Info schliessen</button> </p>" 
+
+            if(correct > 10) {
+                var confettiSettings = { target: 'my-canvas' };
+                var confetti = new ConfettiGenerator(confettiSettings);
+                confetti.render();
+            }
             resetTimer();
+            correct = 0;
+            return correct;
         }
     } else {
         timer.innerHTML = hr + ':' + min + ':' + sec;
@@ -707,3 +736,12 @@ function resetTimer() {
 
 // close overlay
 function closeOverlay() {document.getElementById("overlay").style.display = "none";}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// CONFETTI.JS //
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
