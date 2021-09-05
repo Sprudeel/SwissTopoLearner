@@ -107,6 +107,7 @@ function setMode(inputmode, buttonId) {
 
     // set Correct counter back to 1
     counter = 1;
+    correct = 0;
 
     // Reset Correctly Solved List
     document.getElementById(500).innerHTML = "<p id='502' style='color: red; text-align: center;'>keine</p><p id=501></p>";
@@ -189,6 +190,7 @@ function setSubject(inputsubject, buttonId) {
 
     // Reset Correct Counter
     counter = 1;
+    correct = 0;
 
     // Reset Correctly Solved List
     document.getElementById(500).innerHTML = "<p id='502' style='color: red; text-align: center;'>keine</p><p id=501></p>";
@@ -319,7 +321,7 @@ function Game() {
             }
         }
 
-        
+
 
         // Set current Answers Var for CheckSolution
         currentAnswer = arrayAnswers[randomNumber - 1];

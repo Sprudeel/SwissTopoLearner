@@ -9,10 +9,10 @@ Play here: [SwissTopoLearner](https://lchsd.ch/projects/swisstopolearner/)
 # Update Log
 ![Commits](https://img.shields.io/github/last-commit/Sprudeel/SwissTopoLearner?style=plastic)
 
-> May 2021 -> Release v1
-> June 2021 -> Fixed repeating questions bug
-> August 2021 -> Started v2
-> 5th September 2021 -> Release v2
+> May 2021 -> Release v1;
+> June 2021 -> Fixed repeating questions bug;
+> August 2021 -> Started v2;
+> 5th September 2021 -> Release v2;
 
 # Explanation
 
