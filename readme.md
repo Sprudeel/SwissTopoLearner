@@ -62,3 +62,5 @@ There are a total of 7 different Subjects. Here are all the Questions:
 
     let  specialAnswers = ["Berner Oberland", "Engadin", "Mittelland", "Seeland"];
 
+
+Copyright Sprudeel 2021
