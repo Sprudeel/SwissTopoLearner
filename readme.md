@@ -8,7 +8,6 @@ Play here: [SwissTopoLearner](https://lchsd.ch/projects/swisstopolearner/)!
 This Project is being created to help people learn the Topography of Switzerland!
 
 
-## 🔧 Built With 
 
  - HTML5
  - CSS3
