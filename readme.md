@@ -2,7 +2,7 @@
 
 Welcome to this Repository containing the Code of the Swiss Topo Learner
 
-Play here: [TopoAfrica](https://lchsd.ch/projects/swisstopolearner/)!
+Play here: [SwissTopoLearner](https://lchsd.ch/projects/swisstopolearner/)!
 
 ## 📙 About this Project
 This Project is being created to help people learn the Topography of Switzerland!
